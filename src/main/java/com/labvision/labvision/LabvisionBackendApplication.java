@@ -17,11 +17,11 @@ public class LabvisionBackendApplication {
 	public CommandLineRunner demo(UserRepository userRepo) {
 		return args -> {
 			//if (usuarioRepo.count() == 0) {
-				//usuarioRepo.deleteAll();      // apaga todos os usuários
+				//userRepo.deleteAll();      // apaga todos os usuários
 				User u = new User();
-				u.setName("Dra. Gabriel");
-				u.setEmail("gabriel@lab.com");
-				u.setPassword("password123");
+				u.setName("Dra. Laura");
+				u.setEmail("laura@lab.com");
+				u.setPassword("password1234");
 				u.setRole("ADMIN");
 				userRepo.save(u);
 			//}
