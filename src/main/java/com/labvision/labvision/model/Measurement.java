@@ -3,7 +3,6 @@ package com.labvision.labvision.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "measurements")
@@ -13,24 +12,24 @@ public class Measurement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "sample_id", nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "sample_id")
     private Sample sample;
 
-    @Column(nullable = false)
+    @Column(name = "width_mm", nullable = false)
     private float widthMm;
 
-    @Column(nullable = false)
+    @Column(name = "length_mm", nullable = false)
     private float lengthMm;
 
-    @Column(nullable = false)
+    @Column(name = "height_mm", nullable = false)
     private float heightMm;
 
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
-    @Lob
-    @Column(name = "image_blob")
+    //@Lob
+    @Column(name = "image_blob", nullable = false)
     private byte[] imageData;
 
     // private String cameraTipo;

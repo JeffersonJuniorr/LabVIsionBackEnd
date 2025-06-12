@@ -10,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -30,7 +31,10 @@ public class MeasurementService {
         Measurement m = new Measurement();
         m.setSample(s); m.setWidthMm(dto.getWidthMm());
         m.setLengthMm(dto.getLengthMm()); m.setHeightMm(dto.getHeightMm());
-        m.setTimestamp(dto.getTimestamp()); m.setImageData(dto.getImageData());
+        m.setTimestamp(dto.getTimestamp() != null
+                ? dto.getTimestamp()
+                : LocalDateTime.now()
+        ); m.setImageData(dto.getImageData());
         Measurement saved = measRepo.save(m);
         dto.setId(saved.getId()); return dto;
     }
