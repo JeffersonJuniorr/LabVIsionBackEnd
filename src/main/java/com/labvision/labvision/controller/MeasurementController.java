@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/measurements")
@@ -37,6 +38,16 @@ public class MeasurementController {
         return ResponseEntity
                 .created(URI.create("/api/measurements/" + created.getId()))
                 .body(created);
+    }
+
+    @GetMapping
+    public List<MeasurementDTO> listAll() {
+        return measurementService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public MeasurementDTO getById(@PathVariable Integer id) {
+        return measurementService.findById(id);
     }
 
     @GetMapping(path = "/{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
