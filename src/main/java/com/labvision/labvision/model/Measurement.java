@@ -30,7 +30,8 @@ public class Measurement {
     private LocalDateTime timestamp;
 
     @Lob
-    private byte[] imagemBlob;
+    @Column(name = "image_blob")
+    private byte[] imageData;
 
     // private String cameraTipo;
 
@@ -46,7 +47,7 @@ public class Measurement {
     public void setHeightMm(float heightMm) { this.heightMm = heightMm; }
     public LocalDateTime getTimestamp() { return timestamp; }
     public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
-    public byte[] getImageData() { return imagemBlob; }
-    public void setImageData(byte[] imageData) { this.imagemBlob = imageData; }
+    public byte[] getImageData() { return imageData; }
+    public void setImageData(byte[] imageData) { this.imageData = imageData; }
 
 }
