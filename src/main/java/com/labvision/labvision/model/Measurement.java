@@ -29,6 +29,7 @@ public class Measurement {
     private LocalDateTime timestamp;
 
     //@Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "image_blob", nullable = false)
     private byte[] imageData;
 

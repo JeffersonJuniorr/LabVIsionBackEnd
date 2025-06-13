@@ -48,6 +48,11 @@
 <!--			<artifactId>flyway-database-postgresql</artifactId>-->
 <!--		</dependency>-->
 		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
@@ -65,6 +70,18 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<!-- garante que o Maven leia recursos em UTF-8 e não tente filtrar os .properties -->
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<!-- excluir todos os application-*.properties do filtering -->
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>properties</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
