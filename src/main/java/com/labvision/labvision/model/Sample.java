@@ -3,12 +3,13 @@ package com.labvision.labvision.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import java.util.UUID;
 
 @Entity
 @Table(name = "samples")
-public class Sample {
+public class Sample extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +43,16 @@ public class Sample {
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
 
+    /** método de negócio: dias desde a coleta */
+    public long daysSinceCollection() {
+        return ChronoUnit.DAYS.between(collectionDate, LocalDate.now());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + " Sample{patient='" + patient + "', tissueType='" + tissueType
+                + "', collected=" + collectionDate
+                + " (" + daysSinceCollection() + "d ago)}";
+    }
 }

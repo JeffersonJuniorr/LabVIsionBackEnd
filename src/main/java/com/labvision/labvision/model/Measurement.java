@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "measurements")
-public class Measurement {
+public class Measurement extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,4 +50,12 @@ public class Measurement {
     public byte[] getImageData() { return imageData; }
     public void setImageData(byte[] imageData) { this.imageData = imageData; }
 
+    @Override
+    public String toString() {
+        return super.toString()
+                + " Measurement{w=" + widthMm
+                + "mm, h=" + heightMm
+                + "mm, l=" + lengthMm
+                + "mm @ " + timestamp + "}";
+    }
 }
