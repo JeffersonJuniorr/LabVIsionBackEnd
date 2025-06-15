@@ -29,23 +29,4 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDTO get(@PathVariable Integer id) { return service.findById(id); }
 
-//    @GetMapping
-//    public List<User> getAllUsers() {
-//        return service.findAll();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public User getUserById(@PathVariable UUID id) {
-//        return service.findById(id);
-//    }
-//
-//    @PostMapping
-//    public User createUser(@RequestBody User user) {
-//        return service.saveUser(user);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteUser(@PathVariable UUID id) {
-//        service.deleteUser(id);
-//    }
 }

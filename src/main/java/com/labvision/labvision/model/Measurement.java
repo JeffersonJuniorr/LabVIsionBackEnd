@@ -30,7 +30,7 @@ public class Measurement {
 
     //@Lob
     @Basic(fetch = FetchType.LAZY)
-    @Column(name = "image_blob", nullable = false)
+    @Column(name = "image_blob", nullable = false, columnDefinition = "LONGBLOB")
     private byte[] imageData;
 
     // private String cameraTipo;
